@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace ToDoApp
 {
@@ -19,7 +20,25 @@ namespace ToDoApp
                                 "-r   Removes an task \n" +
                                 "-c   Completes an task");
                               
+            //Console.ReadLine();
+
+            string path = "todo-list.txt";
+            try
+            {
+                string[] content = File.ReadAllLines(path);
+                Console.WriteLine(content);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
             Console.ReadLine();
+
+            //using (StreamWriter writer = new StreamWriter(path))
+            //{
+            //    writer.WriteLine("walk the dog");
+            //}
         }
     }
 }
