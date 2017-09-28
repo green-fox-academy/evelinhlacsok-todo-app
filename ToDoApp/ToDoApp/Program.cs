@@ -28,14 +28,23 @@ namespace ToDoApp
             else if (args.Contains("-l")) 
             {
                 string path = @"../../todo-list.txt";
+               
                 try
                 {
                     string[] content = File.ReadAllLines(path);
-                    foreach (var task in content)
+                    int count = 1;
+                    foreach (string task in content)
                     {
-                        Console.WriteLine(task);
+                
+                        if (content.Length == 0)
+                        {
+                            Console.WriteLine("lucky you, there is no task for today");
+                        }
+                        else
+                        {
+                                Console.WriteLine(count++ + " - " + task);
+                        }    
                     }
-
                 }
                 catch (Exception)
                 {
