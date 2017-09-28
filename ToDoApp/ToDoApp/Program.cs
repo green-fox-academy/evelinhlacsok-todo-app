@@ -22,24 +22,30 @@ namespace ToDoApp
                               
             Console.ReadLine();
 
-            string path = @".todo-list.txt";
+            string path = @"../../todo-list.txt";
             try
             {
                 string[] content = File.ReadAllLines(path);
-                Console.WriteLine(content);
+                foreach (var task in content)
+                {
+                    Console.WriteLine(task);
+                }
+               
             }
             catch (Exception)
             {
                 Console.WriteLine("Uh-oh, could not read the file!");
             }
             Console.ReadLine();
-        }
-        
 
             //using (StreamWriter writer = new StreamWriter(path))
             //{
             //    writer.WriteLine("walk the dog");
             //}
         }
+
+
+       
     }
+}
 
