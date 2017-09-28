@@ -33,16 +33,15 @@ namespace ToDoApp
                 {
                     string[] content = File.ReadAllLines(path);
                     int count = 1;
-                    foreach (string task in content)
+                    if (content.Length == 0)
                     {
-                
-                        if (content.Length == 0)
-                        {
-                            Console.WriteLine("lucky you, there is no task for today");
-                        }
-                        else
-                        {
-                                Console.WriteLine(count++ + " - " + task);
+                       Console.WriteLine("lucky you, there is no task for today");
+                    }
+                    else
+                    {
+                        foreach (string task in content)
+                        { 
+                            Console.WriteLine(count++ + " - " + task);
                         }    
                     }
                 }
@@ -52,16 +51,11 @@ namespace ToDoApp
                 }
                 Console.ReadLine();
             }
-            
-
             //using (StreamWriter writer = new StreamWriter(path))
             //{
             //    writer.WriteLine("walk the dog");
             //}
         }
-
-
-       
     }
 }
 
