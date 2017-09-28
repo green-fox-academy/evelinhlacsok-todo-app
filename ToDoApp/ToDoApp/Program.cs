@@ -59,21 +59,31 @@ namespace ToDoApp
                   // using (StreamWriter taskwriter = new StreamWriter(path))
                   using (StreamWriter taskwriter = File.AppendText(path))
                    {
-                        taskwriter.WriteLine(args[1]);
-                        
+                        taskwriter.WriteLine(args[1]);     
                    }
                 }
                 catch (Exception)
                 {
                     Console.WriteLine("Unable to write file: todo-list.txt. Add new task in between quotation marks!"); 
                 }
+            }
+            else if (args.Contains("-r"))
+            {
+                string path = @"../../todo-list.txt";
+                try
+                {
+                    var file = new List<string>(File.ReadAllLines(path));
+                    file.RemoveAt(Convert.ToInt32(args[1])-1);
+                    File.WriteAllLines(path, file);
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
                 
 
             }
-            //using (StreamWriter writer = new StreamWriter(path))
-            //{
-            //    writer.WriteLine("walk the dog");
-            //}
         }
     }
 }
