@@ -11,6 +11,7 @@ namespace ToDoApp
     {
         static void Main(string[] args)
         {
+          //  args = new string[]{ "-a", "dog" };
             if (args.Length == 0)
             {
                 Console.WriteLine("Command Line Todo application \n" +
@@ -24,7 +25,6 @@ namespace ToDoApp
 
                 Console.ReadLine();
             }
-
             else if (args.Contains("-l")) 
             {
                 string path = @"../../todo-list.txt";
@@ -50,6 +50,25 @@ namespace ToDoApp
                     Console.WriteLine("Uh-oh, could not read the file!");
                 }
                 Console.ReadLine();
+            }
+            else if (args.Contains("-a"))
+            {
+                string path = @"../../todo-list.txt";
+                try
+                {
+                  // using (StreamWriter taskwriter = new StreamWriter(path))
+                  using (StreamWriter taskwriter = File.AppendText(path))
+                   {
+                        taskwriter.WriteLine(args[1]);
+                        
+                   }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Unable to write file: todo-list.txt"); 
+                }
+                
+
             }
             //using (StreamWriter writer = new StreamWriter(path))
             //{
