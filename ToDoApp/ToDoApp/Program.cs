@@ -76,13 +76,18 @@ namespace ToDoApp
                     file.RemoveAt(Convert.ToInt32(args[1])-1);
                     File.WriteAllLines(path, file);
                 }
-                catch (Exception)
+                catch (IndexOutOfRangeException)
                 {
-
-                    throw;
+                    Console.WriteLine("Unable to remove: no index provided");
                 }
-                
-
+                catch (ArgumentOutOfRangeException)
+                {
+                    Console.WriteLine("Unable to remove: index is out of bound");
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Unable to remove: index is not a number");
+                }
             }
         }
     }
