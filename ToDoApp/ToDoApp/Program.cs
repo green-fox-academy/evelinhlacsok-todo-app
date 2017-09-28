@@ -65,7 +65,7 @@ namespace ToDoApp
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("Unable to write file: todo-list.txt"); 
+                    Console.WriteLine("Unable to write file: todo-list.txt. Add new task in between quotation marks!"); 
                 }
                 
 
