@@ -11,7 +11,12 @@ namespace ToDoApp
         static void Main(string[] args)
         {
             Console.WriteLine("Command Line Todo application \n" +
-                                "=============================");
+                                "============================= \n" +
+                                "Command line arguments: \n" +
+                                "-l   Lists all the tasks \n" +
+                                "-a   Adds a new task \n" +
+                                "-r   Removes an task \n" + 
+                                "-c   Completes an task");
             Console.ReadLine();
         }
     }
