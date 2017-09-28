@@ -11,32 +11,39 @@ namespace ToDoApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Command Line Todo application \n" +
+            if (args.Length == 0)
+            {
+                Console.WriteLine("Command Line Todo application \n" +
                                 "=============================");
-            Console.WriteLine();
-            Console.WriteLine("Command line arguments: \n" +
-                                "-l   Lists all the tasks \n" +
-                                "-a   Adds a new task \n" +
-                                "-r   Removes an task \n" +
-                                "-c   Completes an task");
-                              
-            Console.ReadLine();
+                Console.WriteLine();
+                Console.WriteLine("Command line arguments: \n" +
+                                    "-l   Lists all the tasks \n" +
+                                    "-a   Adds a new task \n" +
+                                    "-r   Removes an task \n" +
+                                    "-c   Completes an task");
 
-            string path = @"../../todo-list.txt";
-            try
+                Console.ReadLine();
+            }
+
+            else if (args.Contains("-l")) 
             {
-                string[] content = File.ReadAllLines(path);
-                foreach (var task in content)
+                string path = @"../../todo-list.txt";
+                try
                 {
-                    Console.WriteLine(task);
+                    string[] content = File.ReadAllLines(path);
+                    foreach (var task in content)
+                    {
+                        Console.WriteLine(task);
+                    }
+
                 }
-               
+                catch (Exception)
+                {
+                    Console.WriteLine("Uh-oh, could not read the file!");
+                }
+                Console.ReadLine();
             }
-            catch (Exception)
-            {
-                Console.WriteLine("Uh-oh, could not read the file!");
-            }
-            Console.ReadLine();
+            
 
             //using (StreamWriter writer = new StreamWriter(path))
             //{
